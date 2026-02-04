@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { 
-  Scale, 
-  Zap, 
-  FileSearch, 
-  FileSignature, 
-  BookOpen, 
-  Library, 
-  MessageSquare, 
+import {
+  Scale,
+  Zap,
+  FileSearch,
+  FileSignature,
+  BookOpen,
+  Library,
+  MessageSquare,
   ChevronLeft,
   ShieldCheck,
   Upload,
@@ -33,14 +33,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ id, title, description, icon,
     onClick={() => onClick(id)}
     className="group cursor-pointer bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
   >
-    <div className={`w-14 h-14 ${color} rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
+    <div className={`w-16 h-16 ${color} text-white rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
       {icon}
     </div>
-    <h3 className="text-xl font-bold text-slate-800 mb-3">{title}</h3>
-    <p className="text-slate-500 text-sm leading-relaxed">{description}</p>
-    <div className="mt-6 flex items-center text-amber-600 font-bold text-sm">
-      اكتشف الآن <ChevronLeft size={16} className="mr-1" />
-    </div>
+    <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-amber-600 transition-colors">{title}</h3>
+    <p className="text-slate-600 mb-4 text-sm leading-relaxed">{description}</p>
+    <span className="text-amber-600 font-bold text-sm">اكتشف الآن →</span>
   </div>
 );
 
@@ -48,12 +46,48 @@ export default function LegalPlatform() {
   const [activeSection, setActiveSection] = useState<SectionId>('home');
 
   const services = [
-    { id: 'consult', title: 'إستشارة قانونية سريعة', description: 'حلول فورية لمشاكلك القانونية مدعومة بنصوص القانون الجزائري.', icon: <Zap />, color: 'bg-amber-500' },
-    { id: 'analyze', title: 'تحليل الوثائق والصور', description: 'تقنية مسح ذكية للكشف عن الثغرات في العقود والوثائق الرسمية.', icon: <FileSearch />, color: 'bg-blue-600' },
-    { id: 'contracts', title: 'صياغة العقود العرفية', description: 'توليد عقود احترافية (بيع، كراء، تنازل) مطابقة للتشريع الوطني.', icon: <FileSignature />, color: 'bg-emerald-600' },
-    { id: 'research', title: 'إعداد البحوث العلمية', description: 'مساعد أكاديمي لطلبة الحقوق والباحثين في إعداد المذكرات.', icon: <BookOpen />, color: 'bg-purple-600' },
-    { id: 'sources', title: 'قائمة المصادر', description: 'الوصول السريع للجرائد الرسمية والاجتهادات القضائية الجزائرية.', icon: <Library />, color: 'bg-slate-700' },
-    { id: 'chat', title: 'دردشة قانونية', description: 'غرف دردشة آمنة للتواصل المباشر مع أساتذة القانون والمحامين.', icon: <MessageSquare />, color: 'bg-rose-600' },
+    { 
+      id: 'consult' as SectionId, 
+      title: 'إستشارة قانونية سريعة', 
+      description: 'حلول فورية لمشاكلك القانونية مدعومة بنصوص القانون الجزائري.', 
+      icon: <Zap size={32} />, 
+      color: 'bg-amber-500' 
+    },
+    { 
+      id: 'analyze' as SectionId, 
+      title: 'تحليل الوثائق والصور', 
+      description: 'تقنية مسح ذكية للكشف عن الثغرات في العقود والوثائق الرسمية.', 
+      icon: <FileSearch size={32} />, 
+      color: 'bg-blue-600' 
+    },
+    { 
+      id: 'contracts' as SectionId, 
+      title: 'صياغة العقود العرفية', 
+      description: 'توليد عقود احترافية (بيع، كراء، تنازل) مطابقة للتشريع الوطني.', 
+      icon: <FileSignature size={32} />, 
+      color: 'bg-emerald-600' 
+    },
+    { 
+      id: 'research' as SectionId, 
+      title: 'إعداد البحوث العلمية', 
+      description: 'مساعد أكاديمي لطلبة الحقوق والباحثين في إعداد المذكرات.', 
+      icon: <BookOpen size={32} />, 
+      color: 'bg-purple-600' 
+    },
+    { 
+      id: 'sources' as SectionId, 
+      title: 'قائمة المصادر', 
+      description: 'الوصول السريع للجرائد الرسمية والاجتهادات القضائية الجزائرية.', 
+      icon: <Library size={32} />, 
+      color: 'bg-slate-700' 
+    },
+    { 
+      id: 'chat' as SectionId, 
+      title: 'دردشة قانونية', 
+      description: 'غرف دردشة آمنة للتواصل المباشر مع أساتذة القانون والمحامين.', 
+      icon: <MessageSquare size={32} />, 
+      color: 'bg-rose-600' 
+    },
   ];
 
   const renderActiveSection = () => {
@@ -87,7 +121,10 @@ export default function LegalPlatform() {
                     <Gavel className="text-amber-600 shrink-0" />
                     <p className="text-sm text-amber-800 font-medium">اطرح سؤالك القانوني وسيقوم المحامي الذكي بتحليل النصوص القانونية ذات الصلة فوراً.</p>
                   </div>
-                  <textarea className="w-full h-48 p-5 border-2 border-slate-100 rounded-2xl focus:border-amber-500 focus:ring-4 focus:ring-amber-500/10 outline-none transition" placeholder="مثلاً: ما هي إجراءات فسخ عقد كراء تجاري في القانون الجزائري؟" />
+                  <textarea 
+                    className="w-full h-48 p-5 border-2 border-slate-100 rounded-2xl focus:border-amber-500 focus:ring-4 focus:ring-amber-500/10 outline-none transition" 
+                    placeholder="مثلاً: ما هي إجراءات فسخ عقد كراء تجاري في القانون الجزائري؟" 
+                  />
                   <button className="w-full bg-amber-500 text-white py-4 rounded-2xl font-black text-lg shadow-lg shadow-amber-500/30 hover:bg-amber-600 transition flex items-center justify-center gap-3">
                     <Search size={24} /> بدء الاستشارة الفورية
                   </button>
@@ -111,13 +148,17 @@ export default function LegalPlatform() {
               {activeSection === 'contracts' && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-4">
-                    <h4 className="font-bold text-slate-800 flex items-center gap-2"><User size={18} /> بيانات الطرف الأول</h4>
+                    <h4 className="font-bold text-slate-800 flex items-center gap-2">
+                      <User size={18} /> بيانات الطرف الأول
+                    </h4>
                     <input className="w-full p-4 bg-slate-50 border-none rounded-xl" placeholder="الاسم الكامل" />
                     <input className="w-full p-4 bg-slate-50 border-none rounded-xl" placeholder="العنوان الوطني" />
                     <input className="w-full p-4 bg-slate-50 border-none rounded-xl" placeholder="رقم بطاقة التعريف" />
                   </div>
                   <div className="space-y-4">
-                    <h4 className="font-bold text-slate-800 flex items-center gap-2"><FileText size={18} /> نوع العقد والموضوع</h4>
+                    <h4 className="font-bold text-slate-800 flex items-center gap-2">
+                      <FileText size={18} /> نوع العقد والموضوع
+                    </h4>
                     <select className="w-full p-4 bg-slate-50 border-none rounded-xl appearance-none">
                       <option>عقد بيع مركبة</option>
                       <option>عقد كراء سكني</option>
@@ -154,7 +195,7 @@ export default function LegalPlatform() {
                 <div className="py-20 text-center">
                   <div className="animate-pulse flex flex-col items-center">
                     <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mb-4">
-                       <Scale className="text-slate-300" size={40} />
+                      <Scale className="text-slate-300" size={40} />
                     </div>
                     <h4 className="text-xl font-bold text-slate-800">قيد التحديث</h4>
                     <p className="text-slate-400">يتم حالياً مزامنة البيانات مع الجريدة الرسمية الجزائرية 2026</p>
@@ -171,27 +212,11 @@ export default function LegalPlatform() {
   if (activeSection !== 'home') return renderActiveSection();
 
   return (
-    <div className="min-h-screen bg-[#fafbfc] text-right" dir="rtl">
-      <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100 px-8 py-4">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <div className="bg-slate-900 p-2 rounded-lg shadow-lg">
-              <Scale className="text-amber-500" size={24} />
-            </div>
-            <span className="text-2xl font-black text-slate-900 uppercase tracking-tighter">الميزان <span className="text-amber-600">DZ</span></span>
-          </div>
-          <div className="hidden md:flex items-center gap-8 text-slate-600 font-bold">
-            <a href="#" className="hover:text-amber-600 transition">الرئيسية</a>
-            <a href="#" className="hover:text-amber-600 transition">المكتبة</a>
-            <button className="bg-slate-900 text-white px-8 py-2.5 rounded-xl font-bold hover:bg-amber-600 transition shadow-xl shadow-slate-900/20">دخول المنصة</button>
-          </div>
-        </div>
-      </nav>
-
+    <div className="min-h-screen bg-white flex flex-col">
       <header className="relative overflow-hidden bg-slate-900 py-28 px-8">
         <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-            <div className="absolute top-10 left-10 w-64 h-64 bg-amber-500 rounded-full blur-[100px]"></div>
-            <div className="absolute bottom-10 right-10 w-96 h-96 bg-blue-600 rounded-full blur-[120px]"></div>
+          <div className="absolute top-10 left-10 w-64 h-64 bg-amber-500 rounded-full blur-[100px]"></div>
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-blue-600 rounded-full blur-[120px]"></div>
         </div>
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -223,8 +248,8 @@ export default function LegalPlatform() {
         <div className="max-w-7xl mx-auto px-8">
           <div className="flex flex-col items-center gap-4">
             <div className="flex items-center gap-2 opacity-50 grayscale">
-               <Scale size={32} />
-               <span className="text-2xl font-black">الميزان DZ</span>
+              <Scale size={32} />
+              <span className="text-2xl font-black">الميزان DZ</span>
             </div>
             <p className="text-slate-400 font-bold">تم التطوير لرفع كفاءة العمل القانوني في الجزائر 🇩🇿 2026</p>
           </div>
